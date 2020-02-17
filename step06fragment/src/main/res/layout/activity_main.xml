@@ -17,7 +17,7 @@
         android:onClick="move"/>
 
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/myFragment"
         android:name="com.gura.step06fragment.MyFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"

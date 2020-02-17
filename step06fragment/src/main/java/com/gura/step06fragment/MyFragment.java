@@ -25,7 +25,14 @@ public class MyFragment extends Fragment
     private int touchCount;
     //TextView 의 참조값
     private TextView textView;
-    private MainActivity activity;
+    //액티비티의 참조값을 MyFragmentListener type 으로 사용하기
+    private MyFragmentListener activity;
+
+    //MyFragment 를 사용할 액티비티가 구현할 리스너 인테페이스
+    public interface MyFragmentListener{
+        public void showMessage(int count);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,8 +43,12 @@ public class MyFragment extends Fragment
         //TextView 에 터치 리스너 등록하기
         textView.setOnTouchListener(this);
         //해당 프레그먼트를 관리하는 액티비티의 참조값
-        activity=(MainActivity) getActivity();
-
+        FragmentActivity a=getActivity();
+        //해당 액티비티가 MyFragmentListener type 이 맞으면
+        if(a instanceof MyFragmentListener){
+            //MyFragmentListener type 으로 casting 한다.
+            activity=(MyFragmentListener)a;
+        }
         //리턴해준다.
         return view;
     }
@@ -49,7 +60,7 @@ public class MyFragment extends Fragment
         //2. TextView 에 출력하기
         textView.setText(Integer.toString(touchCount));
         //3. 액티비티의 메소드 호출하면서 카운트 전달하기
-        if(touchCount%10 == 0){
+        if(touchCount%10 == 0 && activity != null){
             activity.showMessage(touchCount);
         }
         return false;
