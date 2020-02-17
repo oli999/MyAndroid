@@ -7,6 +7,8 @@
     tools:context=".MainActivity">
 
     <ListView
+        android:choiceMode="singleChoice"
+        android:listSelector="#00ff00"
         android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="0dp"

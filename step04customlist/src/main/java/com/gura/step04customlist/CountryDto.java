@@ -1,6 +1,11 @@
 package com.gura.step04customlist;
 
-public class CountryDto {
+import java.io.Serializable;
+/*
+        Intent 객체에 putExtra() 해서 담을수 있도록
+        Serializable 인터페이스를 구현 시킨다.
+ */
+public class CountryDto implements Serializable {
     //필드
     private int resId;
     private String name;
