@@ -48,9 +48,18 @@ public class PlaceholderFragment extends Fragment {
                 false);
         // 이미지뷰의 참조값 얻어와서
         ImageView imageView=view.findViewById(R.id.imageView);
+        // TextView 의 참조값 얻어오기
+        TextView textView=view.findViewById(R.id.textView);
         // 이미지 출력하기
         imageView.setImageResource(dto.getResId());
+        textView.setText(dto.getContent());
         // View 객체 리턴해주기
         return view;
     }
 }
+
+
+
+
+
+
