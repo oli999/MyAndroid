@@ -32,11 +32,11 @@ public class MyView extends View {
     //3.
     @Override
     protected void onDraw(Canvas canvas) {
-       canvas.drawColor(Color.GREEN);
-       Paint textPaint=new Paint();
-       textPaint.setColor(Color.BLACK);
-       textPaint.setTextSize(100);
-       canvas.drawText("x:"+x+" y:"+y, 10, 110, textPaint);
+        canvas.drawColor(Color.GREEN);
+        Paint textPaint=new Paint();
+        textPaint.setColor(Color.BLACK);
+        textPaint.setTextSize(100);
+        canvas.drawText("x:"+x+" y:"+y, 10, 110, textPaint);
     }
     //터치 이벤트 처리
     @Override
