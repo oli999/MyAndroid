@@ -93,11 +93,8 @@ public class MainActivity extends AppCompatActivity
                 String timeStamp=
                         new SimpleDateFormat("yyyyMMdd_HHmmss")
                                 .format(new Date());
-                String imageFileName="JPEG_"+timeStamp+"_";
                 String path=getExternalFilesDir(null).getAbsolutePath();
                 photoFile=new File(path+"/"+timeStamp+".jpg");
-                //외부 저장장치에 저장할수 있도록 (디렉토리 얻어오기)
-
                 //절대 경로를 맴버필드에 저장한다.
                 absolutePath=photoFile.getAbsolutePath();
             }catch(Exception e){
@@ -105,7 +102,6 @@ public class MainActivity extends AppCompatActivity
             }
             if(photoFile!=null){
                 //사진을 저장할 파일의 Uri 객체를 얻어온다.
-                //Uri uri=Uri.fromFile(photoFile);
                 Uri uri= FileProvider.getUriForFile(this, "com.gura.step09camera.fileprovider", photoFile);
 
                 Log.i("uri", uri.getPath());
