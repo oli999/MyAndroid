@@ -24,6 +24,13 @@
                 <action android:name="android.intent.action.AIRPLANE_MODE"/>
             </intent-filter>
         </receiver>
+        <receiver android:name=".HungryReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name=".HUNGRY"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
