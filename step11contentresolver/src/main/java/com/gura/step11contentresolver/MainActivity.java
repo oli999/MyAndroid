@@ -27,19 +27,15 @@ public class MainActivity extends AppCompatActivity
     //필요한 필드 정의하기
     private EditText editText;
     private ListView listView;
-    private ArrayAdapter<String> adapter;
-    private List<String> list=new ArrayList<>();
+    private ContactAdapter adapter;
+    private List<ContactDto> list=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editText=findViewById(R.id.editText);
         listView=findViewById(R.id.listView);
-        adapter=new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                list
-        );
+        adapter=new ContactAdapter(this, R.layout.listview_cell, list);
         listView.setAdapter(adapter);
 
         //버튼의 참조값 얻어와서 리스너 등록하기
@@ -60,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         String[] columns={
                 ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
                 ContactsContract.CommonDataKinds.Phone.NUMBER,
-                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
         };
 
         //키워드 읽어오기
@@ -81,13 +77,13 @@ public class MainActivity extends AppCompatActivity
 
         //Cursor 객체에서 반복문 돌면서 데이터 추출하기
         while(cursor.moveToNext()){
-            long id=cursor.getLong(0);
+            int id=(int)cursor.getLong(0);
             String phoneNumber=cursor.getString(1);
             String name=cursor.getString(2);
-            //연락처 정보를 한줄의 문자열로 구성을 해서
-            String info=id+" | "+phoneNumber+" | "+name;
+            //얀락처 정보를 ContactDto 에 담기
+            ContactDto dto=new ContactDto(id, phoneNumber, name);
             //모델에 추가한다.
-            list.add(info);
+            list.add(dto);
         }
         //ListView 가 갱신되도록 아답타에 알린다.
         adapter.notifyDataSetChanged();
