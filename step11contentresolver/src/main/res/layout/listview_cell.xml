@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="10dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="아이디"
-        android:id="@+id/text_id"/>
+        android:id="@+id/text_id"
+        android:textSize="20sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="전화번호"
-        android:id="@+id/text_phone"/>
+        android:id="@+id/text_phone"
+        android:textSize="20sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="이름"
-        android:id="@+id/text_name"/>
+        android:id="@+id/text_name"
+        android:textSize="20sp"/>
 </LinearLayout>

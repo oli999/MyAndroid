@@ -4,6 +4,8 @@
 
     <!-- 연락처 정보에 접근 하겠다는 퍼미션 -->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <!-- 전화를 걸겠다는 퍼미션 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
