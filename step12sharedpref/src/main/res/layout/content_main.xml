@@ -40,6 +40,15 @@
         android:layout_marginTop="52dp"
         android:text="Switch"
         app:layout_constraintStart_toStartOf="@+id/saveBtn"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="Settings 확인"
+        android:onClick="readSettings"
+        app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+        app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

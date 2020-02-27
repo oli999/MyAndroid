@@ -127,6 +127,23 @@ public class MainActivity extends AppCompatActivity
             sw.setText("Off");
         }
     }
+    //Setting 액티비티에서 저장했던 값을 읽어내는 메소드
+    public void readSettings(View v){
+        //디폴트로 사용하는 SharedPreferences 객체의 참조값 얻어오기
+        SharedPreferences pref=
+                PreferenceManager.getDefaultSharedPreferences(this);
+        // signature 라는 키값으로 저장된 문자열 읽어오기
+        String signature=pref.getString("signature", "");
+        // reply 라는 키값으로 저장된 문자열 읽어오기
+        String reply=pref.getString("reply", "");
+        // sync 라는 키값으로 저장된 boolean 값 읽어오기
+        boolean sync=pref.getBoolean("sync", false);
+
+        String info="signature:"+signature+" | reply:"+reply+
+                " | sync:"+sync;
+        Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+
+    }
 }
 
 
