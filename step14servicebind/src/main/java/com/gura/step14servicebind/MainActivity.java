@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
     }
     //서비스로 부터 문자열을 전달받을 메소드
     public void setMsg(final String msg){
-
         //UI 스레드에서 동작할수 있도록 한다.
         runOnUiThread(new Runnable() {
             @Override
