@@ -15,27 +15,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Main3Activity extends AppCompatActivity
+public class Main4Activity extends AppCompatActivity
                         implements Util.RequestListener{
-    //필드
-    private ArrayAdapter<String> adapter;
-    private List<String> names;
+    private MemberAdapter adapter;
+    private List<MemberDto> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //모델
-        names=new ArrayList<>();
-        //아답타
-        adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                names
-        );
+        //모델 객체 생성
+        list=new ArrayList<>();
+        //아답타 객체 생성
+        adapter=new MemberAdapter(this, R.layout.listview_cell, list);
         //ListView
         ListView listView=findViewById(R.id.listView);
         listView.setAdapter(adapter);
         //스프링 웹서버에 요청하기
-        String urlAddr="http://192.168.0.2:8888/spring05/android/getmember.do";
+        String urlAddr="http://192.168.0.2:8888/spring05/android/member/list.do";
         Util.sendGetRequest(0, urlAddr, null, this);
     }
 
@@ -43,9 +39,9 @@ public class Main3Activity extends AppCompatActivity
     public void onSuccess(int requestId, Map<String, Object> result) {
         /*
             [
-                {"NUM":1,"NAME":"김구라","ADDR":"노량진"},
-                {"NUM":2,"NAME":"해골","ADDR":"행신동"},
-                {"NUM":3,"NAME":"원숭이","ADDR":"동물원"},
+                {"NUM":1,"NAME":"김구라"},
+                {"NUM":2,"NAME":"해골"},
+                {"NUM":3,"NAME":"원숭이"},
                 {},
                 {},
                 .
@@ -63,10 +59,10 @@ public class Main3Activity extends AppCompatActivity
                 JSONObject obj=arr.getJSONObject(i);
                 int num=obj.getInt("NUM");
                 String name=obj.getString("NAME");
-                String addr=obj.getString("ADDR");
-                String info=num+"|"+name+"|"+addr;
+                //회원정보를 MemberDto 객체를 생성해서 담은 다음
+                MemberDto tmp=new MemberDto(num, name, null);
                 //모델에 추가
-                names.add(info);
+                list.add(tmp);
             }
             //아답타에 모델의 데이터가 바뀌었다고 알려서 ListView 가 업데이트 되도록한다.
             adapter.notifyDataSetChanged();
