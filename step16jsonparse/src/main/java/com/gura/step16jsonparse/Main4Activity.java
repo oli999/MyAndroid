@@ -1,6 +1,9 @@
 package com.gura.step16jsonparse;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,7 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Main4Activity extends AppCompatActivity
-                        implements Util.RequestListener{
+                        implements Util.RequestListener,
+                        AdapterView.OnItemClickListener {
     private MemberAdapter adapter;
     private List<MemberDto> list;
     @Override
@@ -33,6 +37,8 @@ public class Main4Activity extends AppCompatActivity
         //스프링 웹서버에 요청하기
         String urlAddr="http://192.168.0.2:8888/spring05/android/member/list.do";
         Util.sendGetRequest(0, urlAddr, null, this);
+        //ListView  에 아이템 클릭 리스너 등록
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -76,6 +82,17 @@ public class Main4Activity extends AppCompatActivity
     public void onFail(int requestId, Map<String, Object> result) {
         String data=(String)result.get("data");
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        //1. 클릭한 셀의 회원번호를 읽어와서
+        int num=list.get(i).getNum();
+        //2. Intent 객체에 담고
+        Intent intent=new Intent(this, DetailActivity.class);
+        intent.putExtra("num", num);
+        //3. DetailActivity 로 이동하기
+        startActivity(intent);
     }
 }
 
