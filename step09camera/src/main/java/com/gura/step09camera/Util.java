@@ -1,4 +1,4 @@
-package com.gura.step16jsonparse;
+package com.gura.step09camera;
 
 import android.app.Activity;
 import android.content.Context;

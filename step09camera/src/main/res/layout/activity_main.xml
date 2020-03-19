@@ -27,10 +27,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
-        <Button
-            android:id="@+id/takePicBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="사진 촬영 하기" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/takePicBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사진 촬영 하기" />
+            <Button
+                android:id="@+id/uploadBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="업로드"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
