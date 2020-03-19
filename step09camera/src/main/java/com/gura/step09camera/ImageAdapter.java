@@ -55,11 +55,13 @@ public class ImageAdapter extends BaseAdapter {
 
         textWriter.setText("업로더 : "+dto.getWriter());
         textRegdate.setText("등록일 : "+dto.getRegdate());
+        // Glide  를 이용해서 ImageView 에 이미지 출력하기
         Glide.with(context)
                 .load(dto.getImageUrl())
                 .centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(imageView);
+
         return view;
     }
 }

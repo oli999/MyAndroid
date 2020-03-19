@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity
     //필드
     private ImageView imageView;
     private String absolutePath; //사진이 저장된 절대 경로
-    public final String UPLOAD_URL="http://192.168.0.5:8888/spring05/android/image/upload.do";
+    public final String UPLOAD_URL=
+            "http://192.168.0.15:8888/spring05/android/image/upload.do";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
