@@ -33,13 +33,18 @@ public class ListActivity extends AppCompatActivity
         list=new ArrayList<>();
         adapter=new ImageAdapter(this, R.layout.listview_cell, list);
         listView.setAdapter(adapter);
-        Util.sendGetRequest(0, IMAGELIST_URL, null, this);
 
         Button takePicBtn=findViewById(R.id.takePicBtn);
         Button refreshBtn=findViewById(R.id.refreshBtn);
 
         takePicBtn.setOnClickListener(this);
         refreshBtn.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Util.sendGetRequest(0, IMAGELIST_URL, null, this);
     }
 
     @Override
