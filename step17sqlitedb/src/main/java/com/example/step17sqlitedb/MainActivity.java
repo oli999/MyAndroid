@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         //버튼 리스너 등록
         saveBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
-        deleteBtn.setOnClickListener(this);
+        detailBtn.setOnClickListener(this);
         //모델 객체 생성
         stringList=new ArrayList<>();
         //아답타 객체 생성
@@ -56,9 +56,15 @@ public class MainActivity extends AppCompatActivity
         listView.setAdapter(adapter);
 
         todoList=new ArrayList<>();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //목록 출력하기
         showList();
     }
+
     //버튼을 눌렀을때 호출되는 메소드
     @Override
     public void onClick(View view) {
@@ -121,7 +127,16 @@ public class MainActivity extends AppCompatActivity
 
         SQLiteDatabase db=helper.getReadableDatabase();
         //실행할 SELECT 문
-        String sql="SELECT num,content,regdate" +
+        /*
+            strftime("날짜형식", 날짜 )
+                년 : %Y
+                월 : %m
+                일 : %d
+                시 : %H
+                분 : %M
+                초 : %S
+         */
+        String sql="SELECT num,content,strftime(\"%Y년%m월%d일 %H시%M분\",regdate)" +
                 " FROM todo" +
                 " ORDER BY num DESC";
         //SELECT 문 수행하고 결과를 Cursor type 으로 받아오기
