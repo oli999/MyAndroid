@@ -3,11 +3,37 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/beer" />
+            <option value="$PROJECT_DIR$/drawpanel" />
+            <option value="$PROJECT_DIR$/step01layout" />
+            <option value="$PROJECT_DIR$/step02activity" />
+            <option value="$PROJECT_DIR$/step03listview" />
+            <option value="$PROJECT_DIR$/step04customlist" />
+            <option value="$PROJECT_DIR$/step05asynctask" />
+            <option value="$PROJECT_DIR$/step06fragment" />
+            <option value="$PROJECT_DIR$/step06fragment2" />
+            <option value="$PROJECT_DIR$/step07customview" />
+            <option value="$PROJECT_DIR$/step08webview" />
+            <option value="$PROJECT_DIR$/step09camera" />
+            <option value="$PROJECT_DIR$/step10broadcastreceiver" />
+            <option value="$PROJECT_DIR$/step11contentresolver" />
+            <option value="$PROJECT_DIR$/step12sharedpref" />
+            <option value="$PROJECT_DIR$/step13service" />
+            <option value="$PROJECT_DIR$/step14servicebind" />
+            <option value="$PROJECT_DIR$/step15httprequest" />
+            <option value="$PROJECT_DIR$/step16jsonparse" />
+            <option value="$PROJECT_DIR$/step17sqlitedb" />
+            <option value="$PROJECT_DIR$/step18googlemap" />
+            <option value="$PROJECT_DIR$/step19locationinfo" />
+            <option value="$PROJECT_DIR$/step20hellokotlin" />
+            <option value="$PROJECT_DIR$/test10" />
+          </set>
+        </option>
         <option name="resolveModulePerSourceSet" value="false" />
         <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
