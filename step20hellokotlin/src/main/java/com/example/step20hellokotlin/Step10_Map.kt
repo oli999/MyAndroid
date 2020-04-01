@@ -1,5 +1,6 @@
 package com.example.step20hellokotlin
 
+
 fun main(){
     //수정 불가한 Map
     var map1:Map<String, Any> = mapOf("num" to 1, "name" to "김구라")
@@ -18,6 +19,7 @@ fun main(){
 
     map4["num"]=4
     map4["name"]="주뎅이"
+
 }
 
 
