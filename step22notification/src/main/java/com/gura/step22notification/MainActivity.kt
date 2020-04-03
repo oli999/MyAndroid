@@ -27,6 +27,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         //버튼에 리스너 등록하기
         notiBtn.setOnClickListener(this)
+        /*
+        notiBtn2.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(p0: View?) {
+
+            }
+        })
+        override 할 메소드가 하나인 경우에 아래와 같이 간략하게 code 를 작성할수 있다.
+        */
+
+        notiBtn2.setOnClickListener({
+            //입력한 문자열 읽어오기
+            var msg=inputMsg.text.toString()
+            makeAutoCancelNoti(msg)
+        })
     }
 
     override fun onClick(v: View?) {//눌러진 버튼의 참조값이 View type 으로 전달된다.
@@ -39,6 +53,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+    //인자로 전달되는 문자열을 알림에 띄우는 함수
+    fun makeManualCancelNoti(msg:String){
+        //이 앱의 알림 체널 만들기
+        createNotificationChannel()
+        //아이디값 1 증가 시키기
+        currentId++
+
+        //알림을 클릭했을때 실행할 Activity 정보를 가지고 있는 Intent 객체
+        val intent = Intent(this, DetailActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra("msg", msg)
+            putExtra("id", currentId)
+        }
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("msg", msg)
+
+        //Intent 객체를 인텐트 전달자 객체에 담는다.
+        val pendingIntent: PendingIntent =
+                PendingIntent.getActivity(this, 0, intent, 0)
+
+        //NotificationCompat.Builer 객체 생성
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+                .setContentTitle("오빠 나야~")
+                .setContentText(msg)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(false) //자동 cancel 되지 않도록
+
+        with(NotificationManagerCompat.from(this)) {
+            //수동으로 cancel 하려면 아래에 전달된 아이디 값을 알아야 한다.
+            notify(currentId, builder.build())
+        }
+    }
+
+
     //인자로 전달되는 문자열을 알림에 띄우는 함수
     fun makeAutoCancelNoti(msg:String){
         //이 앱의 알림 체널 만들기
