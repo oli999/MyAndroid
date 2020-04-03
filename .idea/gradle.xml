@@ -32,6 +32,7 @@
             <option value="$PROJECT_DIR$/step19locationinfo" />
             <option value="$PROJECT_DIR$/step20hellokotlin" />
             <option value="$PROJECT_DIR$/step21hellokotlin" />
+            <option value="$PROJECT_DIR$/step22notification" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

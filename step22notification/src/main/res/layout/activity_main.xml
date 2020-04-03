@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -29,22 +28,18 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="메세지 입력..."/>
+            android:hint="알림에 띄울 메세지 입력..."/>
 
         <Button
-            android:id="@+id/addBtn"
+            android:id="@+id/notiBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="추가" />
-        <Button
-            android:id="@+id/clearBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="모두삭제" />
+            android:text="자동 취소 알림" />
 
-        <ListView
+        <Button
+            android:id="@+id/notiBtn2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/myListView"/>
+            android:layout_height="wrap_content"
+            android:text="수동 취소 알림" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
